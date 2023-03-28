@@ -27,10 +27,8 @@ class PostsController extends Controller
 
         $imagePath = request('image')->store('uploads', 'public');
         // dd($imagePath);
-        // $image = Image::make(public_path('\storage\{{$imagePath}}'))->fit(1200,1200);
-        // $image = Image::make(request()->file('image')->getRealPath())->fit(1200,1200);
-        // dd($image);
-        // $image->save();
+        $image = Image::make(public_path("/storage/{$imagePath}"))->fit(1200,1200);
+        $image->save();
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
@@ -38,7 +36,11 @@ class PostsController extends Controller
         ]);
 
         return redirect()->route('profile.show', auth()->user()->id);
-        // dd(request()->all());
-        // return view('posts.create');
+    }
+
+    public function show(\App\Models\Post $post) {
+
+        return view('posts.show', compact('post'));
+        // dd($post);
     }
 }
