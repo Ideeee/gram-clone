@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row">
     <div class="col-3 p-5">
-    <img src="{{$user->profile->profileImage()}}" class="rounded-circle" alt="dp w-100"> 
+    <img src="{{$user->profile->profileImage()}}" class="rounded-circle w-100"> 
     </div>
      <div class="col-9 pt-5">
         <div class="d-flex justify-content-between align-items-baseline">
          <div class="d-flex align-items-center pb-3">
             <div class="h4">{{$user->username}}</div>
 
-            <button class="btn btn-primary ml-4">Follow</button>
+            <button class="btn btn-primary ms-4">Follow</button>
          </div>
 
          @can('update', $user->profile)
@@ -23,7 +23,7 @@
          <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
       @endcan
  
-        <div class="d-flex">
+        <div class="d-flex pt-1">
             <div><strong>{{$user->posts->count()}}</strong> posts</div>
             <div class="ps-3"><strong>12k</strong> followers</div>
             <div class="ps-3"><strong>3k</strong> following</div>
@@ -31,7 +31,7 @@
 
         <div class="pt-3 fw-bold">{{$user->profile->title}}</div>
         <div>{{$user->profile->description}}</div>
-        <div><a href="{{$user->profile->url}}">Idee.dev</a></div>
+        <div><a href="{{$user->profile->url}}" target=blank>{{$user->profile->url}}</a></div>
      </div>
 
      <div class="row pt-5">
